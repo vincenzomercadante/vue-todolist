@@ -47,6 +47,7 @@
               class="form-control d-inline-block"
               placeholder="Type a new task"
               v-model="newTask.text"
+              @keyUp.enter="saveTask()"
             />
             <button class="btn btn-success mt-3" @click="saveTask()">
               <i class="fa-solid fa-trash"></i> Save Task
@@ -65,7 +66,9 @@
               class="task fs-5"
               :class="task.done ? 'done' : ''"
             >
-              <div class="task-text">{{task.text}}</div>
+              <div class="task-text" @click="isDone(tasks[index])">
+                {{task.text}}
+              </div>
               <div class="task-comands">
                 <!-- done button -->
                 <button
