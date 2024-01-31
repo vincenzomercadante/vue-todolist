@@ -34,6 +34,10 @@ const app = createApp({
     isDone(task) {
       task.done = task.done ? false : true;
     },
+
+    isDelete(index) {
+      this.tasks.splice(index, 1);
+    },
   },
 });
 
