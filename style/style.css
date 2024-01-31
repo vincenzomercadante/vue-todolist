@@ -27,6 +27,12 @@ h1 {
   margin-top: 50px;
 }
 
+.tasks-container {
+  padding: 1rem;
+  height: 400px;
+  overflow: auto;
+}
+
 /* ? task */
 .task {
   margin-bottom: 1rem;
