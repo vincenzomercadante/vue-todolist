@@ -33,9 +33,28 @@
     <!-- vue app container -->
     <div id="app" class="p-5">
       <!-- title app -->
-      <h1>VUE ToDO list</h1>
+      <h1>Vue.JS ToDo List</h1>
+
       <!-- todoapp container -->
       <div class="container">
+        <!-- add task row -->
+        <div class="row mb-5 justify-content-center">
+          <div class="col-6 text-center">
+            <h2 class="display-4 mb-3">Add a new Task!</h2>
+            <input
+              type="text"
+              name=""
+              class="form-control d-inline-block"
+              placeholder="Type a new task"
+              v-model="newTask.text"
+            />
+            <button class="btn btn-success mt-3" @click="saveTask()">
+              <i class="fa-solid fa-trash"></i> Save Task
+            </button>
+          </div>
+        </div>
+
+        <!-- tasks row -->
         <div class="row">
           <div class="col-4">
             <!-- section title -->
@@ -43,7 +62,7 @@
             <!-- task generator -->
             <div
               v-for="(task, index) in tasks"
-              class="task"
+              class="task fs-5"
               :class="task.done ? 'done' : ''"
             >
               <div class="task-text">{{task.text}}</div>

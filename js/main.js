@@ -23,6 +23,11 @@ const app = createApp({
           done: false,
         },
       ],
+
+      newTask: {
+        text: "",
+        done: false,
+      },
     };
   },
 
@@ -34,9 +39,18 @@ const app = createApp({
     isDone(task) {
       task.done = task.done ? false : true;
     },
-
+    /**
+     *
+     * @param {number} index index task which i have to delete
+     */
     isDelete(index) {
       this.tasks.splice(index, 1);
+    },
+
+    // save new task
+    saveTask() {
+      this.tasks.push({ ...this.newTask });
+      this.newTask.text = "";
     },
   },
 });
