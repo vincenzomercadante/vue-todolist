@@ -50,7 +50,7 @@
               @keyUp.enter="saveTask()"
             />
             <button class="btn btn-success mt-3" @click="saveTask()">
-              <i class="fa-solid fa-trash"></i> Save Task
+              <i class="fa-solid fa-floppy-disk"></i> Save Task
             </button>
           </div>
         </div>
@@ -59,33 +59,73 @@
         <div class="row">
           <div class="col-4">
             <!-- section title -->
-            <h2 class="display-4 mb-3 text-center">To do tasks</h2>
+            <h2 class="display-4 mb-3 text-center">To do</h2>
             <!-- task generator -->
             <div
               v-for="(task, index) in tasks"
               class="task fs-5"
-              :class="task.done ? 'done' : ''"
+              v-show="!task.done && !task.deleted"
             >
-              <div class="task-text" @click="isDone(tasks[index])">
-                {{task.text}}
-              </div>
+              <div class="task-text" @click="isDone(task)">{{task.text}}</div>
               <div class="task-comands">
                 <!-- done button -->
-                <button
-                  @click="isDone(tasks[index])"
-                  class="btn btn-success ms-3"
-                >
+                <button @click="isDone(task)" class="btn btn-success ms-3">
                   <i class="fa-solid fa-check"></i>
                 </button>
                 <!-- delete button -->
-                <button @click="isDelete(index)" class="btn btn-danger ms-3">
+                <button @click="isDeleted(task)" class="btn btn-danger ms-3">
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
             </div>
           </div>
-          <div class="col-4"></div>
-          <div class="col-4"></div>
+          <div class="col-4">
+            <!-- section title -->
+            <h2 class="display-4 mb-3 text-center">Completed</h2>
+            <!-- task completed generator -->
+            <div
+              v-for="(task, index) in tasks"
+              class="task fs-5"
+              v-show="task.done && !task.deleted"
+            >
+              <div class="task-text" @click="isDone(task)">{{task.text}}</div>
+              <div class="task-comands">
+                <!-- reset button -->
+                <button @click="isDone(task)" class="btn btn-warning ms-3">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <!-- delete button -->
+                <button @click="isDeleted(task)" class="btn btn-danger ms-3">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <!-- section title -->
+            <h2 class="display-4 mb-3 text-center">Deleted</h2>
+            <!-- task deleted generator -->
+            <div
+              v-for="(task, index) in tasks"
+              class="task fs-5"
+              v-show="task.deleted"
+            >
+              <div class="task-text" @click="isDone(task)">{{task.text}}</div>
+              <div class="task-comands">
+                <!-- reset button -->
+                <button @click="isRefreshed(task)" class="btn btn-warning ms-3">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+                <!-- delete button -->
+                <button
+                  @click="isDeleted(task, index)"
+                  class="btn btn-danger ms-3"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

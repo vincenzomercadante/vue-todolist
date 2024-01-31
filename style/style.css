@@ -2,7 +2,8 @@
 :root {
   /* palette */
   --app-bg: #222;
-  --main-text: antiquewhite;
+  --main-text: #42b883;
+  --secondary-txt: antiquewhite;
 }
 
 /* ! generics */
@@ -35,6 +36,7 @@ h1 {
   align-items: center;
   border-radius: 20px;
   background-color: #555;
+  color: var(--secondary-txt);
   cursor: pointer;
   transition-property: box-shadow, transform;
   transition-duration: 0.3s;
