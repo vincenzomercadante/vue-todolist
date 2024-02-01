@@ -57,3 +57,11 @@ h1 {
 .task.done {
   text-decoration: line-through;
 }
+
+.btn-warning .fa-arrows-rotate {
+  transition: transform 1s linear;
+}
+
+.btn-warning:hover .fa-arrows-rotate {
+  transform: rotate(360deg);
+}

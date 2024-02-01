@@ -46,7 +46,7 @@
               name=""
               class="form-control d-inline-block"
               placeholder="Type a new task"
-              v-model="newTask.text"
+              v-model.trim="newTask.text"
               @keyUp.enter="saveTask()"
             />
             <button class="btn btn-success mt-3" @click="saveTask()">
@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-4">
             <!-- section title -->
-            <h2 class="display-4 mb-3 text-center">To do</h2>
+            <h3 class="display-4 mb-3 text-center text-warning">To do</h3>
             <!-- task generator -->
             <div class="tasks-container">
               <div
@@ -81,9 +81,10 @@
               </div>
             </div>
           </div>
+
           <div class="col-4">
             <!-- section title -->
-            <h2 class="display-4 mb-3 text-center">Completed</h2>
+            <h3 class="display-4 mb-3 text-center text-success">Completed</h3>
             <!-- task completed generator -->
             <div class="tasks-container">
               <div
@@ -105,9 +106,10 @@
               </div>
             </div>
           </div>
+
           <div class="col-4">
             <!-- section title -->
-            <h2 class="display-4 mb-3 text-center">Deleted</h2>
+            <h3 class="display-4 mb-3 text-center text-danger">Deleted</h3>
             <!-- task deleted generator -->
             <div class="tasks-container">
               <div
@@ -115,7 +117,7 @@
                 class="task fs-5"
                 v-show="task.deleted"
               >
-                <div class="task-text" @click="isDone(task)">{{task.text}}</div>
+                <div class="task-text">{{task.text}}</div>
                 <div class="task-comands">
                   <!-- reset button -->
                   <button
